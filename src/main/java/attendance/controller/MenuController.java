@@ -1,5 +1,7 @@
 package attendance.controller;
 
+import static attendance.validation.CommandValidator.validateInvalidCommand;
+
 import camp.nextstep.edu.missionutils.DateTimes;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -42,7 +44,7 @@ public class MenuController {
         try {
             OutputView.printStartMessage(today);
             String command = InputView.readMenuCommand();
-//            validateInvalidCommand(command);
+            validateInvalidCommand(command);
             return command;
         } catch (IllegalArgumentException e) {
             OutputView.printErrorMessage(e.getMessage());
