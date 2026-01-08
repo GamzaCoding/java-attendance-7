@@ -16,6 +16,11 @@ public class AttendanceRepository {
         initAttendanceSheetFromFile();
     }
 
+    public void removeAttendance(String name, Attendance oldAttendance) {
+        Attendances attendances = getAttendancesByName(name);
+        attendances.remove(oldAttendance);
+    }
+
     public void save(String name, LocalDate date, LocalTime time) {
         if (attendanceSheet.containsKey(name)) {
             Attendances attendances = attendanceSheet.get(name);
@@ -29,11 +34,11 @@ public class AttendanceRepository {
             attendances.addAttendance(attendance);
         }
     }
-
     public Attendance getAttendanceByNameAndDay(String name, LocalDate today) {
         Attendances attendances = getAttendancesByName(name);
         return attendances.findAttendance(today);
     }
+
     public Attendances getAttendancesByName(String name) {
         return attendanceSheet.getOrDefault(name, null); // 이건 나중에 고치자
     }

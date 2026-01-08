@@ -7,10 +7,15 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class NameValidator {
-    public static void validateValidName(String name) {
+    public static void validateNameForAttend(String name) {
         validateNameFormat(name);
         validateInRepository(name);
         validateIsAlreadyAttend(name);
+    }
+
+    public static void validateValidNameFromModify(String name) {
+        validateNameFormat(name);
+        validateInRepository(name);
     }
 
     private static void validateNameFormat(String name) {

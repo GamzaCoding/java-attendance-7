@@ -42,4 +42,23 @@ public class OutputView {
     public static void printInputAttendTimeMessage() {
         System.out.println("등교 시간을 입력해 주세요.");
     }
+
+    public static void printModifyNameMessage() {
+        System.out.println("출석을 수정하려는 크루의 닉네임을 입력해 주세요.");
+    }
+
+    public static void printModifyDateMessage() {
+        System.out.println("수정하려는 날짜(일)를 입력해 주세요.");
+    }
+
+    public static void printModifyTimeMessage() {
+        System.out.println("언제로 변경하겠습니까?");
+    }
+
+    public static void printModifyAttendanceMessage(Attendance oldAttendance, Attendance newAttendance) {
+        String message = String.format("%s -> %s 수정 완료!", oldAttendance, newAttendance.getMessageForModify());
+        System.out.println();
+        System.out.println(message);
+        System.out.println();
+    }
 }

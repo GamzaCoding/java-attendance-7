@@ -5,6 +5,7 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.TextStyle;
 import java.util.Locale;
+import java.util.Objects;
 
 public class Attendance {
     private final String name;
@@ -25,7 +26,28 @@ public class Attendance {
     }
 
     public boolean isSameDate(LocalDate day) {
-        return day == date;
+        return date.equals(day);
+    }
+
+    public String getMessageForModify() {
+        DateTimeFormatter timeFormatter1 = DateTimeFormatter.ofPattern("HH:mm");
+        String timeFormat = time.format(timeFormatter1);
+        return String.format("%s (%s)", timeFormat, state.getState());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Attendance that = (Attendance) o;
+        return Objects.equals(name, that.name) && Objects.equals(date, that.date)
+                && Objects.equals(time, that.time) && state == that.state;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, date, time, state);
     }
 
     @Override

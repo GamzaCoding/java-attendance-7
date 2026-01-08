@@ -15,6 +15,7 @@ public class MenuController {
     private static final String MENU_4 = "4";
     private static final String QUIT = "Q";
     private static final AttendanceController attendanceController = new AttendanceController();
+    private static final ModifyController modifyController = new ModifyController();
 
     public void selectMenu() {
         LocalDateTime now = DateTimes.now();
@@ -28,7 +29,7 @@ public class MenuController {
                 attendanceController.tryAttendance(today);
             }
             if (menu.equals(MENU_2)) {
-//                attendanceController.startXXX_2_Logic();
+                modifyController.modifyAttendance();
             }
             if (menu.equals(MENU_3)) {
 //                attendanceController.startXXX_3_Logic();

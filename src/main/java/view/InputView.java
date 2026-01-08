@@ -14,4 +14,8 @@ public class InputView {
     public static String readTime() {
         return Console.readLine();
     }
+
+    public static String readDate() {
+        return Console.readLine();
+    }
 }

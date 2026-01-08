@@ -11,8 +11,8 @@ public class Attendances {
         attendances.add(attendance);
     }
 
-    public List<Attendance> getAttendances() {
-        return attendances;
+    public void remove(Attendance oldAttendance) {
+        attendances.removeIf(attendance -> attendance.equals(oldAttendance));
     }
 
     public boolean alreadyAttended(LocalDate day) {
@@ -21,6 +21,7 @@ public class Attendances {
     }
 
     public Attendance findAttendance(LocalDate day) {
+        boolean check = hasAttendance(day);
         if (!hasAttendance(day)) {
             throw new IllegalArgumentException("[ERROR] 뭔가 잘못된 상황입니다");
         }
@@ -33,5 +34,9 @@ public class Attendances {
     private boolean hasAttendance(LocalDate day) {
        return attendances.stream()
                 .anyMatch(attendance -> attendance.isSameDate(day));
+    }
+
+    public List<Attendance> getAttendances() {
+        return attendances;
     }
 }

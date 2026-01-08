@@ -24,7 +24,7 @@ public class AttendanceController {
     private String inputName() {
         OutputView.printInputNameMessage();
         String name = InputView.readName();
-        NameValidator.validateValidName(name);
+        NameValidator.validateNameForAttend(name);
         return name;
     }
 
