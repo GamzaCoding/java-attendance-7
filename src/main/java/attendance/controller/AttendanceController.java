@@ -11,7 +11,7 @@ public class AttendanceController {
     public void tryAttendance(LocalDate today) {
         DateTimeValidator.validateCanAttendDay(today);
         String name = inputName();
-        LocalTime time = inputTime();
+        LocalTime time = inputTime(today);
 
     }
 
@@ -21,7 +21,7 @@ public class AttendanceController {
         return name;
     }
 
-    private LocalTime inputTime() {
+    private LocalTime inputTime(LocalDate today) {
         String time = InputView.readTime();
         DateTimeValidator.validateValidAttendTime(time);
         return LocalTime.parse(time);
