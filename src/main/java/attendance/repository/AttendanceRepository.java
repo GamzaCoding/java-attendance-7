@@ -1,5 +1,7 @@
 package attendance.repository;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,6 +14,13 @@ public class AttendanceRepository {
 
     private AttendanceRepository(){
         initAttendanceSheetFromFile();
+    }
+
+    public void save(String name, LocalDate date, LocalTime time) {
+        if (attendanceSheet.containsKey(name)) {
+            Attendances attendances = attendanceSheet.get(name);
+            attendances.addAttendance(new Attendance(name, date, time));
+        }
     }
 
     public void save(String name, Attendance attendance) {
