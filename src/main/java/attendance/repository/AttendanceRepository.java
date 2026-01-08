@@ -30,9 +30,14 @@ public class AttendanceRepository {
         }
     }
 
-    public Attendances getAttendanceByName(String name) {
+    public Attendance getAttendanceByNameAndDay(String name, LocalDate today) {
+        Attendances attendances = getAttendancesByName(name);
+        return attendances.findAttendance(today);
+    }
+    public Attendances getAttendancesByName(String name) {
         return attendanceSheet.getOrDefault(name, null); // 이건 나중에 고치자
     }
+
     private static void initAttendanceSheetFromFile() {
         FileReader fileReader = new FileReader();
         List<AttendanceLog> attendanceLogs = fileReader.readAttendanceLog();

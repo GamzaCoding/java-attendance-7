@@ -1,5 +1,6 @@
 package view;
 
+import attendance.repository.Attendance;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.TextStyle;
@@ -25,5 +26,9 @@ public class OutputView {
 
         System.out.println(todayMessage);
         System.out.println(message);
+    }
+
+    public static void printAttendanceMessage(Attendance attendance) {
+        System.out.println(attendance);
     }
 }

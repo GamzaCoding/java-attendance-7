@@ -36,6 +36,7 @@ public class Attendance {
         String dayOfKorea = date.getDayOfWeek().getDisplayName(TextStyle.FULL, Locale.KOREA);
         String timeFormat = time.format(timeFormatter1); // 08:04
 
+        // 12월 13일 금요일 09:59 (출석, 지각, 결석)
         return String.format("%s %s %s (%s)", monthDayFormat, dayOfKorea, timeFormat, state.getState());
     }
 }
