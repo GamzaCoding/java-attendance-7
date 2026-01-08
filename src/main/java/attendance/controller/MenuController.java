@@ -17,10 +17,14 @@ public class MenuController {
     private static final AttendanceController attendanceController = new AttendanceController();
 
     public void selectMenu() {
+        LocalDate localDate = DateTimes.now().toLocalDate();
+        LocalDate today = localDate.withYear(2024).withMonth(12).withDayOfMonth(13);
+        OutputView.printStartMessage(today);
+
         while (true) {
             String menu = initMenuCommand();
             if (menu.equals(MENU_1)) {
-                attendanceController.tryAttendance();
+                attendanceController.tryAttendance(today);
             }
             if (menu.equals(MENU_2)) {
 //                attendanceController.startXXX_2_Logic();
@@ -38,11 +42,7 @@ public class MenuController {
     }
 
     private String initMenuCommand() {
-        LocalDate localDate = DateTimes.now().toLocalDate();
-        LocalDate today = localDate.withYear(2024).withMonth(12).withDayOfMonth(13);
-
         try {
-            OutputView.printStartMessage(today);
             String command = InputView.readMenuCommand();
             validateInvalidCommand(command);
             return command;

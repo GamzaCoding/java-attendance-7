@@ -1,33 +1,29 @@
 package attendance.controller;
 
-import attendance.validation.Validator;
-import camp.nextstep.edu.missionutils.DateTimes;
+import attendance.validation.NameValidator;
+import attendance.validation.DateTimeValidator;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 import view.InputView;
 
 public class AttendanceController {
 
-    public void tryAttendance() {
+    public void tryAttendance(LocalDate today) {
+        DateTimeValidator.validateCanAttendDay(today);
         String name = inputName();
         LocalTime time = inputTime();
-        LocalDate today = DateTimes.now().toLocalDate();
-
-
-
 
     }
 
     private String inputName() {
         String name = InputView.readName();
-        Validator.validateValidName(name);
+        NameValidator.validateValidName(name);
         return name;
     }
 
     private LocalTime inputTime() {
         String time = InputView.readTime();
-        Validator.validateValidAttendTime(time);
+        DateTimeValidator.validateValidAttendTime(time);
         return LocalTime.parse(time);
     }
 }

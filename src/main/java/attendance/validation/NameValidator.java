@@ -6,7 +6,7 @@ import camp.nextstep.edu.missionutils.DateTimes;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-public class Validator {
+public class NameValidator {
     public static void validateValidName(String name) {
         validateNameFormat(name);
         validateInRepository(name);
