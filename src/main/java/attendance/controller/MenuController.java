@@ -1,5 +1,8 @@
 package attendance.controller;
 
+import camp.nextstep.edu.missionutils.DateTimes;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import view.InputView;
 import view.OutputView;
 
@@ -33,7 +36,11 @@ public class MenuController {
     }
 
     private String initMenuCommand() {
+        LocalDate localDate = DateTimes.now().toLocalDate();
+        LocalDate today = localDate.withYear(2024).withMonth(12).withDayOfMonth(13);
+
         try {
+            OutputView.printStartMessage(today);
             String command = InputView.readMenuCommand();
 //            validateInvalidCommand(command);
             return command;
