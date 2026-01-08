@@ -14,17 +14,17 @@ public class AttendanceController {
 
     public void tryAttendance(LocalDate today) {
         DateTimeValidator.validateCanAttendDay(today);
-        String name = inputName();
+        String name = inputName(today);
         LocalTime time = inputTime(today);
         repository.save(name, today, time);
         Attendance attendance = repository.getAttendanceByNameAndDay(name, today);
         OutputView.printAttendanceMessage(attendance);
     }
 
-    private String inputName() {
+    private String inputName(LocalDate today) {
         OutputView.printInputNameMessage();
         String name = InputView.readName();
-        NameValidator.validateNameForAttend(name);
+        NameValidator.validateNameForAttend(name, today);
         return name;
     }
 

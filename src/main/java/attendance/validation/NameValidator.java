@@ -7,13 +7,13 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class NameValidator {
-    public static void validateNameForAttend(String name) {
+    public static void validateNameForAttend(String name, LocalDate today) {
         validateNameFormat(name);
         validateInRepository(name);
-        validateIsAlreadyAttend(name);
+//        validateIsAlreadyAttend(name, today);
     }
 
-    public static void validateValidNameFromModify(String name) {
+    public static void validateValidName(String name) {
         validateNameFormat(name);
         validateInRepository(name);
     }
@@ -32,12 +32,10 @@ public class NameValidator {
         }
     }
 
-    private static void validateIsAlreadyAttend(String name) {
+    private static void validateIsAlreadyAttend(String name, LocalDate today) {
         AttendanceRepository repository = AttendanceRepository.getInstance();
 
         Attendances attendances = repository.getAttendancesByName(name);
-        LocalDateTime now = DateTimes.now();
-        LocalDate today = now.toLocalDate();
         if (attendances.alreadyAttended(today)) {
             throw new IllegalArgumentException("[ERROR] 이미 출석을 확인하였습니다. 필요한 경우 수정 기능을 이용해 주세요.");
         }

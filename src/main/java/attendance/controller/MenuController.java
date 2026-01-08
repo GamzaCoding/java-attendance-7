@@ -3,6 +3,7 @@ package attendance.controller;
 import static attendance.validation.CommandValidator.validateInvalidCommand;
 
 import camp.nextstep.edu.missionutils.DateTimes;
+import java.lang.ModuleLayer.Controller;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import view.InputView;
@@ -16,11 +17,12 @@ public class MenuController {
     private static final String QUIT = "Q";
     private static final AttendanceController attendanceController = new AttendanceController();
     private static final ModifyController modifyController = new ModifyController();
+    private static final LookUpController lookUpController = new LookUpController();
 
     public void selectMenu() {
         LocalDateTime now = DateTimes.now();
-        LocalDate localDate = now.toLocalDate();
-        LocalDate today = localDate.withYear(2024).withMonth(12).withDayOfMonth(13);
+        LocalDate today = now.toLocalDate();
+//        LocalDate today = localDate.withYear(2024).withMonth(12).withDayOfMonth(13);
 
         while (true) {
             OutputView.printStartMessage(today);
@@ -32,7 +34,7 @@ public class MenuController {
                 modifyController.modifyAttendance();
             }
             if (menu.equals(MENU_3)) {
-//                attendanceController.startXXX_3_Logic();
+                lookUpController.lookUp();
             }
             if (menu.equals(MENU_4)) {
 //                attendanceController.startXXX_3_Logic();

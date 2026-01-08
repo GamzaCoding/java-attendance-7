@@ -1,5 +1,6 @@
 package view;
 
+import attendance.dto.AttendanceRecord;
 import attendance.repository.Attendance;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -60,5 +61,17 @@ public class OutputView {
         System.out.println();
         System.out.println(message);
         System.out.println();
+    }
+
+    public static void printAttendanceRecord(String name, AttendanceRecord attendanceRecord) {
+        System.out.printf("이번 달 %s의 출석 기록입니다.\n", name);
+        System.out.println();
+        for (String record : attendanceRecord.getRecords()) {
+            System.out.println(record);
+        }
+        System.out.println();
+        System.out.println(attendanceRecord.calculateState());
+        System.out.println();
+        System.out.println(attendanceRecord.getStates());
     }
 }

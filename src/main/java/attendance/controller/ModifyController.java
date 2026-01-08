@@ -42,7 +42,7 @@ public class ModifyController {
     private String inputName() {
         OutputView.printModifyNameMessage();
         String name = InputView.readName();
-        NameValidator.validateValidNameFromModify(name);
+        NameValidator.validateValidName(name);
         return name;
     }
 }
