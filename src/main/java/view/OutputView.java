@@ -29,6 +29,17 @@ public class OutputView {
     }
 
     public static void printAttendanceMessage(Attendance attendance) {
+        System.out.println();
         System.out.println(attendance);
+        System.out.println();
+    }
+
+    public static void printInputNameMessage() {
+        System.out.println();
+        System.out.println("닉네임을 입력해 주세요.");
+    }
+
+    public static void printInputAttendTimeMessage() {
+        System.out.println("등교 시간을 입력해 주세요.");
     }
 }

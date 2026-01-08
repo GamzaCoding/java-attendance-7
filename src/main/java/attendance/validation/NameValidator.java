@@ -29,7 +29,8 @@ public class NameValidator {
 
     private static void validateIsAlreadyAttend(String name) {
         AttendanceRepository repository = AttendanceRepository.getInstance();
-        Attendances attendances = repository.getAttendanceByName(name);
+
+        Attendances attendances = repository.getAttendancesByName(name);
         LocalDateTime now = DateTimes.now();
         LocalDate today = now.toLocalDate();
         if (attendances.alreadyAttended(today)) {

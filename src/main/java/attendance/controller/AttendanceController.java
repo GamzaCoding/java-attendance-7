@@ -22,12 +22,14 @@ public class AttendanceController {
     }
 
     private String inputName() {
+        OutputView.printInputNameMessage();
         String name = InputView.readName();
         NameValidator.validateValidName(name);
         return name;
     }
 
     private LocalTime inputTime(LocalDate today) {
+        OutputView.printInputAttendTimeMessage();
         String time = InputView.readTime();
         DateTimeValidator.validateValidAttendTime(time);
         return LocalTime.parse(time);

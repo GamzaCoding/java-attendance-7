@@ -17,11 +17,12 @@ public class MenuController {
     private static final AttendanceController attendanceController = new AttendanceController();
 
     public void selectMenu() {
-        LocalDate localDate = DateTimes.now().toLocalDate();
+        LocalDateTime now = DateTimes.now();
+        LocalDate localDate = now.toLocalDate();
         LocalDate today = localDate.withYear(2024).withMonth(12).withDayOfMonth(13);
-        OutputView.printStartMessage(today);
 
         while (true) {
+            OutputView.printStartMessage(today);
             String menu = initMenuCommand();
             if (menu.equals(MENU_1)) {
                 attendanceController.tryAttendance(today);
