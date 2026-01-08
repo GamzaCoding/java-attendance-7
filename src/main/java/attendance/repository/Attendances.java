@@ -1,5 +1,6 @@
 package attendance.repository;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,5 +13,10 @@ public class Attendances {
 
     public List<Attendance> getAttendances() {
         return attendances;
+    }
+
+    public boolean alreadyAttended(LocalDate day) {
+        return attendances.stream()
+                .anyMatch(attendance -> attendance.isSameDate(day));
     }
 }

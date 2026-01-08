@@ -20,7 +20,7 @@ public class MenuController {
         while (true) {
             String menu = initMenuCommand();
             if (menu.equals(MENU_1)) {
-//                attendanceController.startXXX_1_Logic();
+                attendanceController.tryAttendance();
             }
             if (menu.equals(MENU_2)) {
 //                attendanceController.startXXX_2_Logic();

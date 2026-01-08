@@ -7,6 +7,7 @@ import java.util.Map;
 public class AttendanceRepository {
     // 출석표, 이름: 해당 크루의 출석정보들
     private final static Map<String, Attendances> attendanceSheet = new HashMap<>();
+
     private final static AttendanceRepository attendanceRepository = new AttendanceRepository();
 
     private AttendanceRepository(){
@@ -56,5 +57,9 @@ public class AttendanceRepository {
 
     public static AttendanceRepository getInstance() {
         return attendanceRepository;
+    }
+
+    public boolean isContain(String name) {
+        return attendanceSheet.containsKey(name);
     }
 }

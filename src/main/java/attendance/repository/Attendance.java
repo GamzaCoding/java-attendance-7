@@ -24,6 +24,10 @@ public class Attendance {
         return name;
     }
 
+    public boolean isSameDate(LocalDate day) {
+        return day == date;
+    }
+
     @Override
     public String toString() {
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("MM월 dd일");
